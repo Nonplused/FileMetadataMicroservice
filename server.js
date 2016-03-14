@@ -14,6 +14,8 @@ var app = express();
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 
+app.use(express.static('public'));
+
 //routes
 app.get('/', (req, res, err) => {
   res.render('index', {});
