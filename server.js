@@ -3,17 +3,22 @@
 //dependencies
 var express = require('express'),
     config = require('konfig')();
+    
+var routes = require('./routes')
 
 //express
 var port = config.app.port;
 var app = express();
+
+  //Views
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 
 //routes
 app.get('/', (req, res, err) => {
-  res.render('index', {})
+  res.render('index', {});
 });
+require('./routes')(app);
 
 //server
 app.listen(port, () => {
